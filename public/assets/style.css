@@ -1,5 +1,6 @@
+@import url('https://fonts.googleapis.com/css?family=Rubik&display=swap');
 body {
-  font-family: sans-serif;
+  font-family: 'Rubik', sans-serif;
   padding: 0;
   margin: 0;
 }
@@ -9,18 +10,19 @@ section {
   display: flex;
   justify-content: center;
   align-items: center;
-  font-size: 4em;
-  color: white;
   transition: transform 0.3s;
 }
-section:nth-child(1) {
-  background: red;
+section:nth-child(even) {
+  background: lightsalmon;
 }
-section:nth-child(2) {
-  background: blue;
+section:nth-child(odd) {
+  background: lightseagreen;
 }
-section:nth-child(3) {
-  background: yellow;
+.container{
+  max-width: 1400px;
+  width: 85%;
+  margin: 0 auto;
+
 }
 
 .fullscreen {
@@ -34,13 +36,39 @@ section:nth-child(3) {
   left:0;
   right:0;
   bottom:0;
-  transition:transform .2s;
+  transition:transform 1s;
+}
+.h-100{
+  height: 100%;
+}
+.love-grid{
+  display: flex;
+  flex-grow: 1;
+}
+section:nth-child(even) .love-grid .img-fluid{
+  order: -1;
+}
+.love-items{
+  padding-left: 15px;
+  padding-right: 15px;
+}
+.love-grid .img-fluid{
+  position: relative;
+  height: 100%;
+  width: 100%;
+  object-fit: cover;
+
 }
 
 .fancy {
   animation: anim2 0.7s ease-out;
 }
-
+@media screen and (min-width:1200px){
+  .love-grid{
+    grid-template-columns: repeat(2,1fr);
+    align-items: center;
+  }
+}
 @keyframes anim2 {
   0% {
     opacity: 0;
