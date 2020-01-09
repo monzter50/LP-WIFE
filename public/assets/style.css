@@ -1,17 +1,25 @@
 @import url('https://fonts.googleapis.com/css?family=Rubik&display=swap');
+*{
+  box-sizing: content-box;
+  padding: 0;
+  margin: 0;
+}
 body {
   font-family: 'Rubik', sans-serif;
   padding: 0;
   margin: 0;
+  font-size: 80%;
 }
 section {
   width: 100%;
   height: 100vh;
-  display: flex;
-  justify-content: center;
-  align-items: center;
+  position: relative;
   transition: transform 0.3s;
 }
+h1,h2{
+  font-size: 3em;
+}
+
 section:nth-child(even) {
   background: lightsalmon;
 }
@@ -52,14 +60,25 @@ section:nth-child(even) .love-grid .img-fluid{
   padding-left: 15px;
   padding-right: 15px;
 }
-.love-grid .img-fluid{
+.img-fluid{
   position: relative;
   height: 100%;
   width: 100%;
   object-fit: cover;
-
 }
-
+.home-section{
+  position: relative;
+}
+.home-section::before{
+  content: "";
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+  background-color:rgba(229, 20, 219,0.5);
+  position: absolute;
+  z-index: 1;
+}
 .fancy {
   animation: anim2 0.7s ease-out;
 }
@@ -87,7 +106,23 @@ section:nth-child(even) .love-grid .img-fluid{
 .fadeIn.fadeInRight {
   animation: fadeInRight 1s ease-out;
 }
-
+.text-white{
+  color: white;
+}
+.title{
+  font-size: 3em;
+  font-weight: 700;
+}
+.sub-title{
+  font-size: 1.8em;
+  font-weight: 400;
+}
+.position-absolute{
+  position: absolute;
+}
+.position-relative{
+  position: relative;
+}
 @media screen and (min-width:1200px){
   .love-grid{
     grid-template-columns: repeat(2,1fr);
