@@ -63,12 +63,7 @@ section:nth-child(even) .love-grid .img-fluid{
 .fancy {
   animation: anim2 0.7s ease-out;
 }
-@media screen and (min-width:1200px){
-  .love-grid{
-    grid-template-columns: repeat(2,1fr);
-    align-items: center;
-  }
-}
+
 @keyframes anim2 {
   0% {
     opacity: 0;
@@ -77,5 +72,59 @@ section:nth-child(even) .love-grid .img-fluid{
   100% {
     opacity: 1;
     transform: scale(1) rotate(0deg);
+  }
+}
+
+
+.fadeIn {
+  animation: fadeIn 1s ease-out;
+}
+
+.fadeIn.fadeInLeft {
+  animation: fadeInLeft 1s ease-out;
+}
+
+.fadeIn.fadeInRight {
+  animation: fadeInRight 1s ease-out;
+}
+
+@media screen and (min-width:1200px){
+  .love-grid{
+    grid-template-columns: repeat(2,1fr);
+    align-items: center;
+  }
+}
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+
+  to {
+    opacity: 1;
+  }
+}
+
+
+@keyframes fadeInLeft {
+  from {
+    opacity: 0;
+    transform: translate3d(-100%, 0, 0);
+  }
+
+  to {
+    opacity: 1;
+    transform: translate3d(0, 0, 0);
+  }
+}
+
+@keyframes fadeInRight {
+  from {
+    opacity: 0;
+    transform: translate3d(100%, 0, 0);
+  }
+
+  to {
+    opacity: 1;
+    transform: translate3d(0, 0, 0);
   }
 }

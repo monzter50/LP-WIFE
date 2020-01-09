@@ -16,8 +16,9 @@ if (document.body.classList.contains("fullscreen")) {
     content.setAttribute("style", `transform:translateY(-${count * 100}vh);`);
   };
 }
+// Animates
+const animateCSS = document.querySelectorAll(".animate");
 
-const myImgs = document.querySelectorAll(".animate");
 const config = {
   rootMargin: "50px 20px 75px 30px",
   threshold: [0, 0.25, 0.75, 1]
@@ -25,15 +26,15 @@ const config = {
 let observer = new IntersectionObserver(entries => {
   entries.forEach(entry => {
     if (entry.intersectionRatio > 0) {
-      entry.target.classList.add("fancy");
+      entry.target.classList.add("fadeIn");
       console.log("in the view", entry.target);
     } else {
-      entry.target.classList.remove("fancy");
+      entry.target.classList.remove("fadeIn");
       console.log("out of view", entry.target);
     }
   });
 }, config);
 
-myImgs.forEach(image => {
-  observer.observe(image);
+animateCSS.forEach(el => {
+  observer.observe(el);
 });
