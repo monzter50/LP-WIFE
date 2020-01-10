@@ -7,9 +7,21 @@ if (document.body.classList.contains("fullscreen")) {
   navigation = '';
   // document.body.insertAdjacentElement(`beforeEnd`,`<div class="navigation"></div>`);
   for(let i=0;i<sectionHTML.length;i++){
-    navigation += `<div class="bullets"><span>hi</span></div>`
+    navigation += `<div class="bullets ${i==0?'active':''}"><span>hi</span></div>`
   }
   document.querySelector('.navigation').innerHTML = navigation
+
+  const bullets = document.querySelectorAll('.bullets')
+
+bullets.forEach((bullet,index)=>{
+  bullet.addEventListener('click',(e)=>{
+    console.log(bullet)
+    document.querySelector('.bullets.active').classList.remove('active')
+    bullet.classList.add('active')
+    spin_value = index
+    scroll_value(spin_value)
+  })
+})
   window.addEventListener("wheel", e => {
     if (e.deltaY > 0) {
       if (spin_value < sectionHTML.length - 1) spin_value += 1;
@@ -20,6 +32,8 @@ if (document.body.classList.contains("fullscreen")) {
   });
   const scroll_value = count => {
     content.setAttribute("style", `transform:translateY(-${count * 100}vh);`);
+    document.querySelector('.bullets.active').classList.remove('active')
+    bullets[count].classList.add('active')
   };
 }
 // Animates

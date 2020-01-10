@@ -53,6 +53,9 @@ p{
   padding: 1em;
   cursor: pointer;
 }
+.bullets.active span{
+  font-weight: bold;
+}
 .fullscreen {
   overflow: hidden;
   position: relative;
