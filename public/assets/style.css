@@ -39,15 +39,16 @@ p{
 }
 .navigation{
   display: flex;
+  flex-direction: column;
+  height: 50vh;
   justify-content: space-between;
 }
 .section-navigation{
   padding: .8em;
   position: absolute;
-  width: 40%;
-  bottom: 3em;
-  left: 50%;
-  transform: translateX(-50%);
+  bottom: 50%;
+  right: 3em;
+  transform: translateY(50%);
   z-index: 100;
 }
 .bullets{
@@ -108,14 +109,14 @@ p{
 }
 
 .banner{
-  background-color:rgba(229, 20, 219,0.5);
+  background-color:rgba(152, 190, 227,0.5);
   position: relative;
   width: 100%;
-    height: 100%;
-    display: grid;
-    justify-items: center;
-    align-content: center;
-    text-align: center;
+  height: 100%;
+  display: grid;
+  justify-items: center;
+  align-content: center;
+  text-align: center;
 }
 .fancy {
   animation: anim2 0.7s ease-out;
@@ -167,6 +168,7 @@ p{
 .sub-title{
   font-size: 1.8em;
   font-weight: 400;
+  margin-bottom: 1em;
 }
 .position-absolute{
   position: absolute;
@@ -189,6 +191,16 @@ p{
   }
   .h-100{
     height: 100%;
+  }
+  .section-navigation{
+    width: 40%;
+    bottom: 3em;
+    left: 50%;
+    transform: translateX(-50%);
+  }
+  .navigation{
+    flex-direction: row;
+    height: auto;
   }
 }
 @keyframes fadeIn {
@@ -224,4 +236,10 @@ p{
     opacity: 1;
     transform: translate3d(0, 0, 0);
   }
+}
+.m-0{
+  margin: 0;
+}
+.p-0{
+  padding: 0;
 }
