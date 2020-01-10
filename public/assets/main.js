@@ -4,6 +4,12 @@ if (document.body.classList.contains("fullscreen")) {
   const sectionHTML = document.querySelectorAll("section");
   const content = document.querySelector(".main__content");
   let spin_value = 0;
+  navigation = '';
+  // document.body.insertAdjacentElement(`beforeEnd`,`<div class="navigation"></div>`);
+  for(let i=0;i<sectionHTML.length;i++){
+    navigation += `<div class="bullets"><span>hi</span></div>`
+  }
+  document.querySelector('.navigation').innerHTML = navigation
   window.addEventListener("wheel", e => {
     if (e.deltaY > 0) {
       if (spin_value < sectionHTML.length - 1) spin_value += 1;

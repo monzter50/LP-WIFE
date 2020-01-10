@@ -1,14 +1,20 @@
-@import url('https://fonts.googleapis.com/css?family=Rubik&display=swap');
+@import url('https://fonts.googleapis.com/css?family=Raleway&display=swap');
+:root{
+  --first-color:#9bd6d4;
+  --second-color:#98BEE3;
+  --third-color:#585858;
+}
 *{
   box-sizing: content-box;
   padding: 0;
   margin: 0;
 }
 body {
-  font-family: 'Rubik', sans-serif;
+  font-family: "Raleway",monserrat;
   padding: 0;
   margin: 0;
   font-size: 80%;
+  color: var(--third-color);
 }
 section {
   width: 100%;
@@ -20,11 +26,10 @@ h1,h2{
   font-size: 3em;
 }
 
-section:nth-child(even) {
-  background: lightsalmon;
-}
-section:nth-child(odd) {
-  background: lightseagreen;
+
+p{
+  font-size: 1.2em;
+  line-height: 1.5;
 }
 .container{
   max-width: 1400px;
@@ -32,7 +37,22 @@ section:nth-child(odd) {
   margin: 0 auto;
 
 }
-
+.navigation{
+  background-color: red;
+  display: flex;
+  padding: .8em;
+  height: 100px;
+  width: auto;
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 100;
+}
+.bullets{
+  padding: 1em;
+  cursor: pointer;
+}
 .fullscreen {
   overflow: hidden;
   position: relative;
@@ -46,19 +66,18 @@ section:nth-child(odd) {
   bottom:0;
   transition:transform 1s;
 }
-.h-100{
-  height: 100%;
-}
+
 .love-grid{
   display: flex;
-  flex-grow: 1;
+  flex-direction: column-reverse;
 }
-section:nth-child(even) .love-grid .img-fluid{
-  order: -1;
-}
+
 .love-items{
-  padding-left: 15px;
-  padding-right: 15px;
+  padding: 2em;
+}
+.flex-items{
+  flex:1 0;
+
 }
 .img-fluid{
   position: relative;
@@ -69,15 +88,16 @@ section:nth-child(even) .love-grid .img-fluid{
 .home-section{
   position: relative;
 }
-.home-section::before{
-  content: "";
-  width: 100%;
-  height: 100%;
-  top: 0;
-  left: 0;
+
+.banner{
   background-color:rgba(229, 20, 219,0.5);
-  position: absolute;
-  z-index: 1;
+  position: relative;
+  width: 100%;
+    height: 100%;
+    display: grid;
+    justify-items: center;
+    align-content: center;
+    text-align: center;
 }
 .fancy {
   animation: anim2 0.7s ease-out;
@@ -96,15 +116,15 @@ section:nth-child(even) .love-grid .img-fluid{
 
 
 .fadeIn {
-  animation: fadeIn 1s ease-out;
+  animation: fadeIn .5s ease-out;
 }
 
 .fadeIn.fadeInLeft {
-  animation: fadeInLeft 1s ease-out;
+  animation: fadeInLeft .5s ease-out;
 }
 
 .fadeIn.fadeInRight {
-  animation: fadeInRight 1s ease-out;
+  animation: fadeInRight .5s ease-out;
 }
 .text-white{
   color: white;
@@ -112,6 +132,19 @@ section:nth-child(even) .love-grid .img-fluid{
 .title{
   font-size: 3em;
   font-weight: 700;
+  position: relative;
+  margin-bottom: .8em;
+  padding-bottom: .2em;
+}
+.title::before{
+    content: "";
+    position: absolute;
+    width: 50%;
+    height: 3px;
+    bottom: 0;
+    left: 0;
+    border-bottom: 3px solid var(--second-color);
+    right: 0;
 }
 .sub-title{
   font-size: 1.8em;
@@ -127,6 +160,17 @@ section:nth-child(even) .love-grid .img-fluid{
   .love-grid{
     grid-template-columns: repeat(2,1fr);
     align-items: center;
+  }
+  section:nth-child(even) .love-grid .img-fluid{
+    order: -1;
+  }
+  .love-grid{
+    flex-grow: 1;
+
+    flex-direction: row;
+  }
+  .h-100{
+    height: 100%;
   }
 }
 @keyframes fadeIn {
