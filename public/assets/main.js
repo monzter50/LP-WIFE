@@ -7,7 +7,7 @@ if (document.body.classList.contains("fullscreen")) {
   navigation = '';
   // document.body.insertAdjacentElement(`beforeEnd`,`<div class="navigation"></div>`);
   for(let i=0;i<sectionHTML.length;i++){
-    navigation += `<div class="bullets ${i==0?'active':''}"><span>hi</span></div>`
+    navigation += `<div class="bullets ${i==0?'active':''}"></div>`
   }
   document.querySelector('.navigation').innerHTML = navigation
 

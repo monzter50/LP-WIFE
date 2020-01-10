@@ -38,24 +38,39 @@ p{
 
 }
 .navigation{
-  background-color: red;
   display: flex;
+  justify-content: space-between;
+}
+.section-navigation{
   padding: .8em;
-  height: 100px;
-  width: auto;
   position: absolute;
-  bottom: 0;
+  width: 40%;
+  bottom: 3em;
   left: 50%;
   transform: translateX(-50%);
   z-index: 100;
 }
 .bullets{
-  padding: 1em;
+  padding: .5em;
   cursor: pointer;
+  flex: 1 0;
+  position: relative;
 }
-.bullets.active span{
-  font-weight: bold;
+.bullets::before{
+  content: '💑';
+  font-size: 3em;
+  position: absolute;
+  top: 50%;
+  opacity: .8;
+  left: 50%;
+  transform: translate(-50%,-50%);
 }
+.bullets.active::before {
+  content: '💏';
+  font-size: 3.5em;
+  opacity: 1;
+}
+
 .fullscreen {
   overflow: hidden;
   position: relative;
