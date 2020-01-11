@@ -9,6 +9,9 @@
   padding: 0;
   margin: 0;
 }
+*:focus {
+  outline: none;
+}
 body {
   font-family: "Raleway",monserrat;
   padding: 0;
@@ -56,18 +59,21 @@ p{
   cursor: pointer;
   flex: 1 0;
   position: relative;
+  outline: none;
+
 }
 .bullets::before{
-  content: '💑';
+  content: '❤️';
   font-size: 3em;
   position: absolute;
   top: 50%;
   opacity: .8;
   left: 50%;
   transform: translate(-50%,-50%);
+  
 }
 .bullets.active::before {
-  content: '💏';
+  content: '💜';
   font-size: 3.5em;
   opacity: 1;
 }
@@ -87,8 +93,7 @@ p{
 }
 
 .love-grid{
-  display: flex;
-  flex-direction: column-reverse;
+  display: grid;
 }
 
 .love-items{
@@ -103,6 +108,7 @@ p{
   height: 100%;
   width: 100%;
   object-fit: cover;
+  display: none;
 }
 .home-section{
   position: relative;
@@ -117,6 +123,9 @@ p{
   justify-items: center;
   align-content: center;
   text-align: center;
+}
+.home-section .img-fluid{
+  display: block;
 }
 .fancy {
   animation: anim2 0.7s ease-out;
@@ -176,7 +185,7 @@ p{
 .position-relative{
   position: relative;
 }
-@media screen and (min-width:1200px){
+@media screen and (min-width:1024px){
   .love-grid{
     grid-template-columns: repeat(2,1fr);
     align-items: center;
@@ -188,6 +197,9 @@ p{
     flex-grow: 1;
 
     flex-direction: row;
+  }
+  .img-fluid{
+    display: block;
   }
   .h-100{
     height: 100%;

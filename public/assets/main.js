@@ -58,3 +58,21 @@ let observer = new IntersectionObserver(entries => {
 animateCSS.forEach(el => {
   observer.observe(el);
 });
+
+const $video = document.querySelector('#video')
+  
+    const options = {
+      // root: document.querySelector('body'),
+      rootMargin: '0px 0px 0px 0px',
+      threshold: .5,
+    }
+    function callback(entries, observer) {
+      console.log('se llamó al callback')
+      if (entries[0].isIntersecting) {
+        $video.play()
+      } else {
+        $video.pause()
+      }
+    }
+    const observerVideo = new IntersectionObserver(callback, options)
+    observerVideo.observe($video)
