@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Prueba de Video y Audio</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            padding: 2rem;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            min-height: 100vh;
+        }
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            text-align: center;
+        }
+        video {
+            width: 100%;
+            max-width: 600px;
+            border-radius: 15px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+            margin: 2rem 0;
+        }
+        .controls {
+            margin: 2rem 0;
+        }
+        button {
+            background: #ff6b9d;
+            border: none;
+            color: white;
+            padding: 1rem 2rem;
+            border-radius: 25px;
+            cursor: pointer;
+            margin: 0.5rem;
+            font-size: 1rem;
+        }
+        button:hover {
+            background: #c44569;
+        }
+        .status {
+            background: rgba(255,255,255,0.1);
+            padding: 1rem;
+            border-radius: 10px;
+            margin: 1rem 0;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>🎵 Prueba de Video y Audio</h1>
+        <p>Esta página te ayuda a verificar que tu video y audio funcionen correctamente.</p>
+        
+        <div class="status" id="status">
+            Estado: Cargando...
+        </div>
+        
+        <video id="testVideo" controls preload="metadata">
+            <source src="./videoplayback.mp4" type="video/mp4">
+            <source src="./videoplayback.webm" type="video/webm">
+            Tu navegador no soporta video HTML5.
+        </video>
+        
+        <div class="controls">
+            <button onclick="toggleMute()">🔇 Activar/Desactivar Audio</button>
+            <button onclick="playVideo()">▶️ Reproducir</button>
+            <button onclick="pauseVideo()">⏸️ Pausar</button>
+            <button onclick="checkAudio()">🔍 Verificar Audio</button>
+        </div>
+        
+        <div class="status" id="info">
+            <h3>Información del Video:</h3>
+            <p id="videoInfo">Cargando información...</p>
+        </div>
+        
+        <div class="status">
+            <h3>Instrucciones:</h3>
+            <ol style="text-align: left;">
+                <li>Verifica que el video se cargue correctamente</li>
+                <li>Haz click en "Activar/Desactivar Audio" para probar el sonido</li>
+                <li>Usa los controles nativos del video</li>
+                <li>Si funciona aquí, funcionará en la presentación principal</li>
+            </ol>
+        </div>
+    </div>
+
+    <script>
+        const video = document.getElementById('testVideo');
+        const status = document.getElementById('status');
+        const videoInfo = document.getElementById('videoInfo');
+        let isMuted = true;
+
+        // Configurar el video
+        video.muted = true;
+        video.volume = 1.0;
+
+        // Event listeners
+        video.addEventListener('loadedmetadata', () => {
+            status.textContent = `Estado: Video cargado (${video.duration.toFixed(2)}s)`;
+            updateVideoInfo();
+        });
+
+        video.addEventListener('play', () => {
+            status.textContent = 'Estado: Reproduciendo';
+        });
+
+        video.addEventListener('pause', () => {
+            status.textContent = 'Estado: Pausado';
+        });
+
+        video.addEventListener('error', (e) => {
+            status.textContent = 'Estado: Error al cargar el video';
+            console.error('Error del video:', e);
+        });
+
+        video.addEventListener('volumechange', () => {
+            updateVideoInfo();
+        });
+
+        function toggleMute() {
+            isMuted = !isMuted;
+            video.muted = isMuted;
+            status.textContent = `Estado: Audio ${isMuted ? 'desactivado' : 'activado'}`;
+            updateVideoInfo();
+        }
+
+        function playVideo() {
+            video.play().catch(e => {
+                status.textContent = 'Estado: Error al reproducir - ' + e.message;
+            });
+        }
+
+        function pauseVideo() {
+            video.pause();
+        }
+
+        function checkAudio() {
+            const info = `
+                Muteado: ${video.muted}<br>
+                Volumen: ${video.volume}<br>
+                Duración: ${video.duration ? video.duration.toFixed(2) + 's' : 'N/A'}<br>
+                Tiempo actual: ${video.currentTime.toFixed(2)}s<br>
+                Listo: ${video.readyState >= 2 ? 'Sí' : 'No'}
+            `;
+            videoInfo.innerHTML = info;
+        }
+
+        function updateVideoInfo() {
+            checkAudio();
+        }
+
+        // Verificar inicialmente
+        setTimeout(checkAudio, 1000);
+    </script>
+</body>
+</html> 

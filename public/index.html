@@ -1,163 +1,282 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>Jira&Mono</title>
+    <title>Nuestros Momentos Especiales - Jira&Mono</title>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, user-scalable=no" />
     <link rel="stylesheet" href="./assets/style.css" />
   </head>
 
   <body class="fullscreen">
+    <!-- Efectos de partículas flotantes -->
+    <div class="floating-hearts" id="floatingHearts"></div>
+    
+    <!-- Control de Audio para el Video -->
+    <div class="audio-controls">
+      <button id="audioToggle" class="audio-btn">
+        <span class="audio-icon">🔇</span>
+        <span class="audio-text">Activar Sonido</span>
+      </button>
+    </div>
+    
     <div class="section-navigation">
       <div class="navigation"></div>
     </div>
 
     <div class="main__content">
+      <!-- SECCIÓN 1: PORTADA PRINCIPAL -->
       <section class="home-section">
+        <!-- IMAGEN DE PORTADA - Reemplaza con tu imagen de fondo -->
         <img
-          src="https://media-files-test.s3.us-east-1.amazonaws.com/post/0.jpeg"
-          class="img-fluid position-absolute  "
-          alt=""
-          srcset=""
+          src="https://images.unsplash.com/photo-1518895949257-7621c3c786d7?w=1200&h=800&fit=crop"
+          class="img-fluid position-absolute"
+          alt="Imagen de portada - Reemplazar con tu foto de fondo"
         />
         <div class="container position-relative banner animate fadeIn">
-          <h1 class="text-white">¡Gracias por este maravilloso año!</h1>
+          <h1 class="text-white">Nuestros Momentos Especiales</h1>
           <h4 class="text-white sub-title">
-            Dos extraños bailando bajo la luna 😍
+            Una colección de todos los momentos que han hecho nuestra historia única 💕
           </h4>
+          <p class="text-white intro-text">
+            Cada momento es una página en nuestro libro de amor, 
+            cada recuerdo un tesoro que atesoramos juntos.
+          </p>
         </div>
       </section>
-      <section>
-        <div class=" h-100">
+
+      <!-- SECCIÓN 2: NUESTRO PRIMER AÑO -->
+      <section class="moment-section">
+        <div class="h-100">
           <div class="love-grid h-100">
             <article class="love-items flex-items animate fadeInRight">
-              <h2 class="title">¡Ya un año!</h2>
-              <p>
-                Para este momento tan especial
-                <b>¡Decidí combinar las dos cosas que más amo!</b> la
-                programación y lo que siento por ti.
-              </p>
-              <p>
-                No soy muy bueno haciendo esto, te escribí unos puntos de ¿Por
-                que eres importante? ¿Ok? ¡Entonces empecemos!
-              </p>
+              <div class="moment-card">
+                <div class="moment-number">01</div>
+                <h2 class="title">¡Nuestro Primer Año Juntos!</h2>
+                <p class="moment-date">🎉 Celebrando 365 días de amor</p>
+                <p>
+                  Para este momento tan especial
+                  <b>¡Decidí combinar las dos cosas que más amo!</b> la
+                  programación y lo que siento por ti.
+                </p>
+                <p>
+                  No soy muy bueno haciendo esto, te escribí unos puntos de ¿Por
+                  que eres importante? ¿Ok? ¡Entonces empecemos!
+                </p>
+                <div class="moment-tags">
+                  <span class="tag">💕 Primer Año</span>
+                  <span class="tag">🎁 Sorpresa</span>
+                  <span class="tag">💻 Programación</span>
+                </div>
+                <button class="view-moment-btn" onclick="openMoment('primer-ano')">
+                  Ver Este Momento ✨
+                </button>
+              </div>
             </article>
+            <!-- IMAGEN 1 - Reemplaza con foto de ustedes juntos -->
             <img
-              src="https://media-files-test.s3.us-east-1.amazonaws.com/post/1.jpg"
+              src="https://images.unsplash.com/photo-1516589178581-6cd7833ae3b2?w=800&h=600&fit=crop"
               class="img-fluid animate flex-items"
-              alt=""
-              srcset=""
+              alt="Foto de ustedes juntos - Reemplazar con tu imagen"
             />
           </div>
         </div>
       </section>
-      <section>
-        <div class=" h-100">
+
+      <!-- SECCIÓN 3: NUESTRA BODA -->
+      <section class="moment-section">
+        <div class="h-100">
           <div class="love-grid h-100">
             <article class="love-items flex-items animate fadeInLeft">
-              <h2 class="title">La Promesa</h2>
-              <p>
-                El hacer una promesa es una arte muy complicado de hacer, tu
-                eres experta en ese arte ¡desde el dia uno! y no me refiero
-                desde que nos casamos si no desde el momento que nos hicimos la
-                promesa de ser honestos no cualquier persona logra cumplir.
-              </p>
-              <p>
-                Porque cuando un hombre ama a una mujer es cómo si le empezara a
-                parecer que lleva tiempo dormido pensando que estaba Vivo .
-              </p>
+              <div class="moment-card">
+                <div class="moment-number">02</div>
+                <h2 class="title">El Día de Nuestra Boda</h2>
+                <p class="moment-date">💒 El día que dijimos "Sí, para siempre"</p>
+                <p>
+                  El hacer una promesa es un arte muy complicado de hacer, tu
+                  eres experta en ese arte ¡desde el día uno! y no me refiero
+                  desde que nos casamos si no desde el momento que nos hicimos la
+                  promesa de ser honestos no cualquier persona logra cumplir.
+                </p>
+                <p>
+                  Porque cuando un hombre ama a una mujer es cómo si le empezara a
+                  parecer que lleva tiempo dormido pensando que estaba Vivo.
+                </p>
+                <div class="moment-tags">
+                  <span class="tag">💒 Boda</span>
+                  <span class="tag">💍 Compromiso</span>
+                  <span class="tag">🤵👰 Promesas</span>
+                </div>
+                <button class="view-moment-btn" onclick="openMoment('nuestra-boda')">
+                  Ver Este Momento ✨
+                </button>
+              </div>
             </article>
+            <!-- IMAGEN 2 - Reemplaza con foto de su boda -->
             <img
-              src="https://media-files-test.s3.us-east-1.amazonaws.com/post/3.jpg"
+              src="https://images.unsplash.com/photo-1519741497674-611481863552?w=800&h=600&fit=crop"
               class="img-fluid animate flex-items"
-              alt=""
-              srcset=""
+              alt="Foto de su boda - Reemplazar con tu imagen"
             />
           </div>
         </div>
       </section>
-      <section>
-        <div class=" h-100">
+
+      <!-- SECCIÓN 4: NUESTRO PRIMER VIAJE -->
+      <section class="moment-section">
+        <div class="h-100">
           <div class="love-grid h-100">
             <article class="love-items flex-items animate fadeInRight">
-              <h2 class="title">La Fuerza</h2>
-              <p>
-                La fuerza es la capacidad, vigor o robustez para mover algo que
-                tiene peso o hace resistencia. Sin embargo no me refiero ese
-                tipo de fuerza, tu fuerza de voluntad, tu fuerza de superarte,
-                tu fuerza de amarme y no olvidemos la fuerza mas importante es
-                la que brillas para impulsarme hacer cosas que ni yo creia
-                hacer.
-              </p>
+              <div class="moment-card">
+                <div class="moment-number">03</div>
+                <h2 class="title">Nuestro Primer Viaje Juntos</h2>
+                <p class="moment-date">✈️ Aventuras y descubrimientos</p>
+                <p>
+                  La fuerza es la capacidad, vigor o robustez para mover algo que
+                  tiene peso o hace resistencia. Sin embargo no me refiero ese
+                  tipo de fuerza, tu fuerza de voluntad, tu fuerza de superarte,
+                  tu fuerza de amarme y no olvidemos la fuerza mas importante es
+                  la que brillas para impulsarme hacer cosas que ni yo creía
+                  hacer.
+                </p>
+                <div class="moment-tags">
+                  <span class="tag">✈️ Viaje</span>
+                  <span class="tag">🗺️ Aventura</span>
+                  <span class="tag">📸 Recuerdos</span>
+                </div>
+                <button class="view-moment-btn" onclick="openMoment('primer-viaje')">
+                  Ver Este Momento ✨
+                </button>
+              </div>
             </article>
+            <!-- IMAGEN 3 - Reemplaza con foto de su primer viaje -->
             <img
-              src="https://media-files-test.s3.us-east-1.amazonaws.com/post/5.jpg"
+              src="https://images.unsplash.com/photo-1529626455594-4ff0802cfb7e?w=800&h=600&fit=crop"
               class="img-fluid animate flex-items"
-              alt=""
-              srcset=""
+              alt="Foto de su primer viaje - Reemplazar con tu imagen"
             />
           </div>
         </div>
       </section>
-      <section>
-        <div class=" h-100">
+
+      <!-- SECCIÓN 5: NUESTRA CASA -->
+      <section class="moment-section">
+        <div class="h-100">
           <div class="love-grid h-100">
             <article class="love-items flex-items animate fadeInRight">
-              <h2 class="title">La Honestidad</h2>
-              <p>
-                La honestidad es un valor moral fundamental para entablar
-                relaciones interpersonales basadas en la confianza, la
-                sinceridad y el respeto mutuo. Asi construiste nuestra relacion y siendo congruente con tu palabra y
-                acciones, un valor que se ha olvidado pero tu lo llevas contigo y lo exparses con tanto amor.
-              </p>
+              <div class="moment-card">
+                <div class="moment-number">04</div>
+                <h2 class="title">Nuestro Hogar</h2>
+                <p class="moment-date">🏠 Construyendo nuestro nido de amor</p>
+                <p>
+                  La honestidad es un valor moral fundamental para entablar
+                  relaciones interpersonales basadas en la confianza, la
+                  sinceridad y el respeto mutuo. Asi construiste nuestra relacion y siendo congruente con tu palabra y
+                  acciones, un valor que se ha olvidado pero tu lo llevas contigo y lo exparses con tanto amor.
+                </p>
+                <div class="moment-tags">
+                  <span class="tag">🏠 Hogar</span>
+                  <span class="tag">🔑 Nuevo Capítulo</span>
+                  <span class="tag">💝 Construyendo</span>
+                </div>
+                <button class="view-moment-btn" onclick="openMoment('nuestro-hogar')">
+                  Ver Este Momento ✨
+                </button>
+              </div>
             </article>
+            <!-- IMAGEN 4 - Reemplaza con foto de su casa -->
             <img
-              src="https://media-files-test.s3.us-east-1.amazonaws.com/post/2.jpg"
+              src="https://images.unsplash.com/photo-1516589178581-6cd7833ae3b2?w=800&h=600&fit=crop"
               class="img-fluid animate flex-items"
-              alt=""
-              srcset=""
+              alt="Foto de su casa - Reemplazar con tu imagen"
             />
           </div>
         </div>
       </section>
-      <section>
-        <div class=" h-100">
+
+      <!-- SECCIÓN 6: NUESTROS LOGROS -->
+      <section class="moment-section">
+        <div class="h-100">
           <div class="love-grid h-100">
             <article class="love-items flex-items animate fadeInRight">
-              <h2 class="title">Tu sonrisa</h2>
-              <p>
-                El verte sonreir es una de las cosas mas hermosas para mi, es el reflejo de tu felicidad y de tu misma escencia. Sin embargo a pesar de estos puntos ¡no cubren toda la magnitud de lo importante que te volviste en mi vida!.
-              </p>
+              <div class="moment-card">
+                <div class="moment-number">05</div>
+                <h2 class="title">Nuestros Logros Juntos</h2>
+                <p class="moment-date">🏆 Superando desafíos como equipo</p>
+                <p>
+                  El verte sonreir es una de las cosas mas hermosas para mi, es el reflejo de tu felicidad y de tu misma escencia. Sin embargo a pesar de estos puntos ¡no cubren toda la magnitud de lo importante que te volviste en mi vida!.
+                </p>
+                <div class="moment-tags">
+                  <span class="tag">🏆 Logros</span>
+                  <span class="tag">💪 Superación</span>
+                  <span class="tag">🎯 Metas</span>
+                </div>
+                <button class="view-moment-btn" onclick="openMoment('nuestros-logros')">
+                  Ver Este Momento ✨
+                </button>
+              </div>
             </article>
+            <!-- IMAGEN 5 - Reemplaza con foto de sus logros -->
             <img
-              src="https://media-files-test.s3.us-east-1.amazonaws.com/post/4.jpg"
+              src="https://images.unsplash.com/photo-1494790108755-2616b612b786?w=800&h=600&fit=crop"
               class="img-fluid animate flex-items"
-              alt=""
-              srcset=""
+              alt="Foto de sus logros - Reemplazar con tu imagen"
             />
           </div>
         </div>
       </section>
-      <section>
-        <div class=" h-100">
+
+      <!-- SECCIÓN 7: MOMENTOS FUTUROS -->
+      <section class="moment-section">
+        <div class="h-100">
           <div class="love-grid h-100">
             <article class="love-items flex-items animate fadeInRight">
-              <h2 class="title m-0">¡Gracias por todo! </h2>
-              <h3 class="sub-title">🦒❤️🐵</h3>
-              <p>
-                Solo me queda el agradecerte por todo, te quiero dejar un pensamiento y una cancion. 
-              </p>
-              <p><cite>"Al principio todos los pensamientos pertenecen al amor. Después, todo el amor pertenece a los pensamientos."
-                -Albert Einstein</cite></p>
+              <div class="moment-card">
+                <div class="moment-number">06</div>
+                <h2 class="title">Momentos por Crear</h2>
+                <p class="moment-date">🌟 Nuestro futuro juntos</p>
+                <p>
+                  Solo me queda el agradecerte por todo, te quiero dejar un pensamiento y una cancion. 
+                </p>
+                <p><cite>"Al principio todos los pensamientos pertenecen al amor. Después, todo el amor pertenece a los pensamientos."
+                  -Albert Einstein</cite></p>
+                <div class="moment-tags">
+                  <span class="tag">🌟 Futuro</span>
+                  <span class="tag">💫 Sueños</span>
+                  <span class="tag">🚀 Por Venir</span>
+                </div>
+                <button class="view-moment-btn" onclick="openMoment('momentos-futuros')">
+                  Ver Este Momento ✨
+                </button>
+              </div>
             </article>
-            <video id="video" class="img-fluid animate flex-items">
+            <!-- VIDEO PERSONAL - Reemplaza con tu video -->
+            <video id="video" class="img-fluid animate flex-items" controls preload="metadata" muted>
               <source src="./video/videoplayback.mp4" type="video/mp4">
               <source src="./video/videoplayback.webm" type="video/webm">
               Your browser does not support HTML5 video.
-            </video>          </div>
+            </video>
+            <div class="video-info">
+              <p>🎵 Haz click en el botón de audio arriba para activar el sonido</p>
+            </div>
+          </div>
         </div>
       </section>
     </div>
+
+    <!-- INSTRUCCIONES PARA REEMPLAZAR IMÁGENES -->
+    <div class="image-instructions" style="display: none;">
+      <h3>📸 Instrucciones para reemplazar imágenes:</h3>
+      <ol>
+        <li><strong>Imagen de Portada:</strong> Línea 25 - Foto de fondo romántica</li>
+        <li><strong>Imagen 1:</strong> Línea 55 - Foto de ustedes juntos</li>
+        <li><strong>Imagen 2:</strong> Línea 85 - Foto de su boda</li>
+        <li><strong>Imagen 3:</strong> Línea 115 - Foto de su primer viaje</li>
+        <li><strong>Imagen 4:</strong> Línea 145 - Foto de su casa</li>
+        <li><strong>Imagen 5:</strong> Línea 175 - Foto de sus logros</li>
+        <li><strong>Video:</strong> Línea 205 - Tu video personal</li>
+      </ol>
+    </div>
+
     <script src="./assets/main.js"></script>
   </body>
 </html>
