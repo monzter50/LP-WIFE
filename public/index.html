@@ -11,11 +11,19 @@
     <!-- Efectos de partículas flotantes -->
     <div class="floating-hearts" id="floatingHearts"></div>
     
-    <!-- Control de Audio para el Video -->
+    <!-- Background Music -->
+    <audio id="bgMusic" loop>
+      <source src="./video/playback.mp3" type="audio/mp3">
+      <source src="./video/playback.ogg" type="audio/ogg">
+      <source src="./video/playback.wav" type="audio/wav">
+      Your browser does not support the audio element.
+    </audio>
+    
+    <!-- Control de Audio -->
     <div class="audio-controls">
-      <button id="audioToggle" class="audio-btn">
-        <span class="audio-icon">🔇</span>
-        <span class="audio-text">Activar Sonido</span>
+      <button id="musicToggle" class="audio-btn">
+        <span class="audio-icon">🎵</span>
+        <span class="audio-text">Música</span>
       </button>
     </div>
     

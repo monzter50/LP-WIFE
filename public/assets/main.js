@@ -150,25 +150,83 @@ function createFloatingHearts() {
   }
 }
 
-// Inicializar partículas cuando se carga la página
+// Audio Control Variables
+let isMusicEnabled = false;
+const musicBtn = document.getElementById('musicToggle');
+const bgMusic = document.getElementById('bgMusic');
+
+// Initialize audio elements
 document.addEventListener('DOMContentLoaded', () => {
   createFloatingHearts();
   
-  // Configurar el video inicialmente
-  if (video) {
-    // Asegurar que el video esté muteado al inicio
-    video.muted = true;
-    video.volume = 1.0;
+  // Configure background music
+  if (bgMusic) {
+    bgMusic.volume = 0.4;
+    musicBtn.style.display = 'flex'; // Show music button immediately
     
-    // Agregar indicador visual de que el audio está desactivado
-    const videoContainer = video.parentElement;
-    if (videoContainer) {
-      videoContainer.style.position = 'relative';
-    }
-    
-    console.log('Video configurado - Audio inicialmente desactivado');
+    // Add error handling for audio loading
+    bgMusic.addEventListener('error', (e) => {
+      console.error('Error loading audio:', e);
+      showAudioMessage('Error al cargar la música de fondo');
+    });
   }
 });
+
+// Background Music Control
+function toggleBackgroundMusic() {
+  if (!bgMusic) return;
+  
+  if (isMusicEnabled) {
+    // Disable music
+    bgMusic.pause();
+    musicBtn.classList.remove('active');
+    musicBtn.querySelector('.audio-icon').textContent = '🎵';
+    musicBtn.querySelector('.audio-text').textContent = 'Música';
+    isMusicEnabled = false;
+  } else {
+    // Enable music
+    bgMusic.currentTime = 0; // Start from beginning
+    bgMusic.play();
+    musicBtn.classList.add('active');
+    musicBtn.querySelector('.audio-icon').textContent = '🎵';
+    musicBtn.querySelector('.audio-text').textContent = 'Silenciar';
+    isMusicEnabled = true;
+  }
+}
+
+// Event listeners for audio controls
+if (musicBtn) {
+  musicBtn.addEventListener('click', () => {
+    try {
+      toggleBackgroundMusic();
+    } catch (error) {
+      console.error('Error toggling music:', error);
+      showAudioMessage('Error al controlar la música');
+    }
+  });
+}
+
+// Show audio message helper
+function showAudioMessage(message) {
+  const audioInfo = document.createElement('div');
+  audioInfo.className = 'audio-message';
+  audioInfo.textContent = message;
+  
+  document.body.appendChild(audioInfo);
+  
+  setTimeout(() => {
+    audioInfo.remove();
+  }, 3000);
+}
+
+// Add click listener to start background music
+document.addEventListener('click', function initAudio() {
+  if (bgMusic && !isMusicEnabled) {
+    toggleBackgroundMusic();
+  }
+  // Remove the click listener after first click
+  document.removeEventListener('click', initAudio);
+}, { once: true });
 
 // Efecto de confeti al hacer click en los bullets
 function createConfetti(x, y) {
@@ -219,98 +277,15 @@ function createConfetti(x, y) {
   }
 }
 
-// Control de Audio para el Video
-let isAudioEnabled = false;
-const audioBtn = document.getElementById('audioToggle');
-const video = document.getElementById('video');
-
-// Función para manejar el control de audio
-function toggleAudio() {
-  if (isAudioEnabled) {
-    // Desactivar audio
-    video.muted = true;
-    audioBtn.classList.remove('audio-on');
-    audioBtn.classList.add('audio-off');
-    audioBtn.querySelector('.audio-icon').textContent = '🔇';
-    audioBtn.querySelector('.audio-text').textContent = 'Activar Sonido';
-    isAudioEnabled = false;
-    console.log('Audio desactivado');
-  } else {
-    // Activar audio
-    video.muted = false;
-    audioBtn.classList.remove('audio-off');
-    audioBtn.classList.add('audio-on');
-    audioBtn.querySelector('.audio-icon').textContent = '🔊';
-    audioBtn.querySelector('.audio-text').textContent = 'Desactivar Sonido';
-    isAudioEnabled = true;
-    console.log('Audio activado');
-    
-    // Intentar reproducir el video si está visible
-    if (video.offsetParent !== null) {
-      video.play().catch(e => {
-        console.log('Error al reproducir automáticamente:', e);
-        // Mostrar mensaje al usuario
-        showVideoMessage('Haz click en el video para reproducir');
-      });
-    }
-  }
-}
-
-// Event listener para el botón de audio
-if (audioBtn) {
-  audioBtn.addEventListener('click', toggleAudio);
-}
-
-// Función para mostrar mensajes sobre el video
-function showVideoMessage(message) {
-  const videoInfo = document.querySelector('.video-info');
-  if (videoInfo) {
-    videoInfo.querySelector('p').textContent = message;
-    videoInfo.style.display = 'block';
-    setTimeout(() => {
-      videoInfo.style.display = 'none';
-    }, 3000);
-  }
-}
-
-// Event listeners para el video
-if (video) {
-  // Cuando el video se carga
-  video.addEventListener('loadedmetadata', () => {
-    console.log('Video cargado, duración:', video.duration);
-  });
-  
-  // Cuando el video comienza a reproducir
-  video.addEventListener('play', () => {
-    console.log('Video reproduciendo');
-    if (isAudioEnabled) {
-      video.muted = false;
-    }
-  });
-  
-  // Cuando hay un error
-  video.addEventListener('error', (e) => {
-    console.log('Error en el video:', e);
-    showVideoMessage('Error al cargar el video');
-  });
-  
-  // Cuando el usuario interactúa con el video
-  video.addEventListener('click', () => {
-    if (isAudioEnabled && video.paused) {
-      video.play().catch(e => console.log('Error al reproducir:', e));
-    }
-  });
-}
-
 // Observar cuando el video entra en vista
 const videoObserver = new IntersectionObserver((entries) => {
   entries.forEach(entry => {
     if (entry.isIntersecting) {
       console.log('Video visible');
-      if (isAudioEnabled) {
+      if (isVideoAudioEnabled) {
         video.play().catch(e => {
           console.log('No se pudo reproducir automáticamente:', e);
-          showVideoMessage('Haz click en el video para reproducir');
+          showAudioMessage('Haz click en el video para reproducir');
         });
       }
     } else {
